@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo Recursos Humanos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+
+    <header class="bg-primary py-5 mb-5">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-12">
+                    <h1 class="display-4 text-white mt-5 mb-2">Consultora PERU SAC</h1>
+                    <p class="lead mb-5 text-white-50">Somos una Consultora empresarial dedicada a la elaboración de Soluciones en Tecnología para Clientes Nacionales e Internacionales con mas de 10 años en el rubro</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" id="app">
+
+        <template v-if="showmodal">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <div class="page-wrapper bg-blue p-t-100 p-b-50">
+                                    <div class="wrapper wrapper--w900">                   
+                                            <div class="card-body">
+                                                <form>
+                                                    <div class="form-group" >
+                                                        <label for="nombre"> Nombre </label>
+                                                        <input v-model="nombre" class="form-control" type="text" id="nombre" name="nombre" v-bind:placeholder="nombre" >
+                                                    </div>
+                                                   
+                                                    <div class="form-group" >
+                                                        <label for="apellido"> Apellido </label>
+                                                        <input v-model="apellido" class="form-control" type="text" id="apellido" name="apellido" v-bind:placeholder="apellido">
+                                                    </div>
+                                                    <div class="form-group" >
+                                                        <label for="dni"> DNI </label>
+                                                        <input  v-model="dni" class="form-control" type="text" id="dni" name="dni" v-bind:placeholder="dni">
+                                                    </div>
+                                                </form>     
+                                            </div> 
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" v-on:click="actualizar"  class="btn btn-primary" data-dismiss="modal" value="Guardar" >
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+
+        <template v-if="showmodalAsesor">
+            <div class="modal fade" id="exampleModalAsesor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <div class="page-wrapper bg-blue p-t-100 p-b-50">
+                                    <div class="wrapper wrapper--w900">                   
+                                            <div class="card-body">
+                                                <form>
+                                                   
+                                                    <div class="form-group" >
+                                                        <label for="nombre"> Nombre </label>
+                                                        <input v-model="nombreAsesor" class="form-control" type="text" id="nombre" name="nombre" v-bind:placeholder="nombre" >
+                                                    </div>
+                                                   
+                                                    <div class="form-group" >
+                                                        <label for="apellido"> Apellido </label>
+                                                        <input v-model="apellidoAsesor" class="form-control" type="text" id="apellido" name="apellido" v-bind:placeholder="apellido">
+                                                    </div>
+                                                    <div class="form-group" >
+                                                        <label for="dni"> DNI </label>
+                                                        <input  v-model="dniAsesor" class="form-control" type="text" id="dni" name="dni" v-bind:placeholder="dni">
+                                                    </div>
+                                                </form>     
+                                            </div> 
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" v-on:click="ingresarAsesor"  class="btn btn-primary" data-dismiss="modal" value="Guardar" >
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template v-if="showmodalTecnico">
+            <div class="modal fade" id="exampleModalTecnico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <div class="page-wrapper bg-blue p-t-100 p-b-50">
+                                    <div class="wrapper wrapper--w900">                   
+                                            <div class="card-body">
+                                                <form>
+                                                   
+                                                    <div class="form-group" >
+                                                        <label for="nombre"> Nombre </label>
+                                                        <input v-model="nombreTecnico" class="form-control" type="text" id="nombre" name="nombre" v-bind:placeholder="nombre" >
+                                                    </div>
+                                                   
+                                                    <div class="form-group" >
+                                                        <label for="apellido"> Apellido </label>
+                                                        <input v-model="apellidoTecnico" class="form-control" type="text" id="apellido" name="apellido" v-bind:placeholder="apellido">
+                                                    </div>
+                                                    <div class="form-group" >
+                                                        <label for="dni"> DNI </label>
+                                                        <input  v-model="dniTecnico" class="form-control" type="text" id="dni" name="dni" v-bind:placeholder="dni">
+                                                    </div>
+                                                </form>     
+                                            </div> 
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" v-on:click="ingresarTecnico"  class="btn btn-primary" data-dismiss="modal" value="Guardar" >
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <div class="row">
+            <button class="btn btn-info btn-block mb-4 " v-on:click="llamar"> Actualizar </button>
+            <button class="btn btn-info btn-block mb-4 " v-on:click="ingresarAsesor" data-toggle="modal" data-target="#exampleModalAsesor"> Ingresar Asesor</button>
+            <button class="btn btn-info btn-block mb-4 " v-on:click="ingresarTecnico" data-toggle="modal" data-target="#exampleModalTecnico"> Ingresar Tecnico </button>
+            <div class="col-10  mb-5 ">
+                <h1> Asesores </h1>
+
+                <table class="table table-bordered table-hover mt-5">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Apellido
+                            </th>
+                            <th>
+                                DNI
+                            </th>
+                            <th>
+                                Acciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="asesor in asesores">
+                            <th>
+                                {{asesor._id}}
+                            </th>
+                            <th>
+                                {{asesor.nombre}}
+                            </th>
+                            <th>
+                                {{asesor.apellido}}
+                            </th>
+                            <th>
+                                {{asesor.dni}}
+                            </th>
+                            <th>
+                                <button class="btn btn-primary" v-on:click="mostrarModal(asesor._id, asesor.nombre, asesor.apellido,asesor.dni)" data-toggle="modal" data-target="#exampleModal"> Actualizar </button>
+                                <button class="btn btn-danger" v-on:click="eliminar(asesor._id)"> Eliminar</button>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h1>Tecnicos</h1>
+                <table class="table table-bordered table-hover mt-5">
+
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Apellido
+                            </th>
+                            <th>
+                                DNI
+                            </th>
+                            <th>
+                                Acciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="tecnico in tecnicos">
+                            <th>
+                                {{ tecnico._id }}
+                            </th>
+                            <th>
+                                {{ tecnico.nombre }}
+                            </th>
+                            <th>
+                                {{ tecnico.apellido}}
+                            </th>
+                            <th>
+                                {{ tecnico.dni }}
+                            </th>
+
+                            <th>
+                                <button class="btn btn-primary" v-on:click="mostrarModal(tecnico._id, tecnico.nombre, tecnico.apellido,tecnico.dni)" data-toggle="modal" data-target="#exampleModal"> Actualizar </button>
+                                <button class="btn btn-danger" v-on:click="eliminar(tecnico._id)"> Eliminar</button>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
+    <script src="moduloRRHH.js"></script>
+</body>
+
+</html>

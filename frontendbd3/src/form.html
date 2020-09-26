@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags-->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Colorlib Templates">
     <meta name="author" content="Colorlib">
     <meta name="keywords" content="Colorlib Templates">
 
-    <!-- Title Page-->
-    <title>Apply for job by Colorlib</title>
 
-    <!-- Font special for pages-->
+    <title>Atencion al Cliente</title>
+
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <!-- Main CSS-->
     <link href="../css-form/main.css" rel="stylesheet" media="all">
 </head>
 
@@ -24,31 +24,54 @@
         <div class="wrapper wrapper--w900">
             <div class="card card-6">
                 <div class="card-heading">
-                    <h2 class="title">Presentar un reclamo</h2>
+                    <h2 class="title">Atencion al Cliente</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                    <form action="http://localhost:3105" method="POST">
+
+                        <div class="form-row">
+                            <div class="name">Tipo de atencion</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <select class="form-control" name="atencion" id="atencion">
+                                        <option value="queja">Queja</option>
+                                        <option value="servicio">Servicio</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-row">
                             <div class="name">Nombre</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" placeholder="Ingrese nombre">
+                                    <input class="input--style-6" type="text" name="nombre" placeholder="Ingrese nombre">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Apellido Paterno </div>
+                            <div class="name">Apellido </div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" placeholder="Ingrese apellido paterno">
+                                    <input class="input--style-6" type="text" name="apellido" placeholder="Ingrese apellidos">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Apellido Materno </div>
+                            <div class="name">Tipo de Persona</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" placeholder="Ingrese apellido materno">
+                                    <select class="form-control" name="persona" id="persona">
+                                        <option value="natural">Natural</option>
+                                        <option value="juridica">Juridica</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Telefono </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="text" name="telefono" placeholder="Ingrese su telefono">
                                 </div>
                             </div>
                         </div>
@@ -56,15 +79,31 @@
                             <div class="name">DNI </div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" placeholder="Ingrese su DNI">
+                                    <input class="input--style-6" type="text" name="dni" placeholder="Ingrese su DNI">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Email </div>
+                            <div class="name">Direccion</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" placeholder="ejemplo@email.com">
+                                    <input class="input--style-6" type="text" name="direccion" placeholder="Direccion de domicilio">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Fecha</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="date" name="fecha" placeholder="Fecha">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Correo Electronico </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="email" name="correo" placeholder="ejemplo@email.com">
                                 </div>
                             </div>
                         </div>
@@ -72,29 +111,25 @@
                             <div class="name">Descripcion</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <textarea class="textarea--style-6" name="message" placeholder="Describa detalladamente su reclamo"></textarea>
+                                    <input class="textarea--style-6" name="descripcion" placeholder="Describa detalladamente su solicitud"></input>
                                 </div>
                             </div>
+                        </div>
+                        <div class="card-footer">
+                            <input class="mx-auto btn btn--radius-2 btn--blue-2" type="submit"></input>
                         </div>
 
                     </form>
                 </div>
-                <div class="card-footer">
-                    <button class="mx-auto btn btn--radius-2 btn--blue-2" type="submit">Enviar</button>
-                </div>
+
             </div>
         </div>
     </div>
 
-    <!-- Jquery JS-->
+
     <script src="vendor-form/jquery/jquery.min.js"></script>
-
-
-    <!-- Main JS-->
     <script src="js-form/global.js"></script>
 
 </body>
-<!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
-<!-- end document-->
